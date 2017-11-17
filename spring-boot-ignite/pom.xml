@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.kevin</groupId>
+  <artifactId>spring-boot-ignite</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+  	<spring.boot.version>1.5.8.RELEASE</spring.boot.version>
+  	<spring.integration.version>4.1.6.RELEASE</spring.integration.version>
+  	<ignite.version>2.3.0</ignite.version>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+		<groupId>org.apache.ignite</groupId>
+		<artifactId>ignite-core</artifactId>
+		<version>${ignite.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.ignite</groupId>
+		<artifactId>ignite-web</artifactId>
+		<version>${ignite.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.ignite</groupId>
+		<artifactId>ignite-log4j</artifactId>
+		<version>${ignite.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.ignite</groupId>
+		<artifactId>ignite-spring</artifactId>
+		<version>${ignite.version}</version>
+	</dependency>
+  
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot</artifactId>
+  		<version>${spring.boot.version}</version>
+  	</dependency>
+  	
+  	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-autoconfigure</artifactId>
+		<version>${spring.boot.version}</version>
+	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-web</artifactId>
+  		<version>${spring.boot.version}</version>
+  		<exclusions>
+  			<exclusion>
+  				<artifactId>spring-aop</artifactId>
+  				<groupId>org.springframework</groupId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency>
+  	
+  	<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <version>${spring.boot.version}</version>
+        <scope>provided</scope>
+    </dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-test</artifactId>
+  		<version>${spring.boot.version}</version>
+  		<scope>test</scope>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework.integration</groupId>
+  		<artifactId>spring-integration-core</artifactId>
+  		<version>${spring.integration.version}</version>
+  		<exclusions>
+  			<exclusion>
+  				<artifactId>spring-aop</artifactId>
+  				<groupId>org.springframework</groupId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency> 
+  	
+  	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-http</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	  	
+  	<dependency>
+		<groupId>com.googlecode.json-simple</groupId>
+		<artifactId>json-simple</artifactId>
+		<version>1.1.1</version>
+	</dependency> 
+	
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>3.8</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi-ooxml</artifactId>
+		<version>3.8</version>
+	</dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>1.2.5.RELEASE</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <dependencies>
+			  	<dependency>
+			  		<groupId>org.springframework.boot</groupId>
+			  		<artifactId>spring-boot</artifactId>
+			  		<version>${spring.boot.version}</version>
+			  	</dependency>
+			  	
+			  	<dependency>
+			  		<groupId>org.springframework.boot</groupId>
+			  		<artifactId>spring-boot-starter-web</artifactId>
+			  		<version>${spring.boot.version}</version>
+			  	</dependency>
+			</dependencies>
+        </plugin>
+    </plugins>
+   </build>
+</project>

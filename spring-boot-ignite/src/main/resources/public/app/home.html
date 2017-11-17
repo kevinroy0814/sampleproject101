@@ -1,0 +1,46 @@
+<section>
+  <h2>Hello! What is your name?</h2>
+  <form class="form-inline">
+    <fieldset>
+       <label>Name</label>
+       <input type="text" data-bind="value: name, valueUpdate: 'afterkeydown'"/>
+       <button type="submit" class="btn" data-bind="click: sayHello, enable: name">Click Me</button>
+    </fieldset>
+  </form>
+  
+  <button data-bind="click: downloadFile">Download</button>
+  <span data-bind="text: loading"></span>
+  <div data-bind="compose: { model: instance }"></div>
+  <div>
+  	<span>Print this one only</span>
+  	<button data-bind="click: printDiv">Print</button>
+  </div>
+  
+  <div>
+  	<input id="fileupload" type="file">
+  </div>
+</section>
+
+<script>
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+		url: 'http://localhost:8080/upload',
+        add: function (e, data) {
+            data.context = $('<button/>').text('Upload')
+                .appendTo(document.body)
+                .click(function () {
+                    data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+                    //data.submit();
+					var jqXHR = data.submit()
+						.success(function (result, textStatus, jqXHR) {/* ... */})
+						.error(function (jqXHR, textStatus, errorThrown) { alert(errorThrown); })
+						.complete(function (result, textStatus, jqXHR) {/* ... */});
+				});
+        },
+        done: function (e, data) {
+            data.context.text('Upload finished.');
+        }
+    }).bind('fileuploadfail', function (e, data) { alert('file upload failed!' + data); });
+});
+</script>
