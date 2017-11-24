@@ -19,7 +19,7 @@ public class IgniteFilterConfig {
 		registration.setFilter(webSessionFilter());
 		registration.addUrlPatterns("/*");
 		registration.setName("webSessionFilter");
-		registration.setOrder(2);
+		registration.setOrder(1);
 
 		return registration;
 	}

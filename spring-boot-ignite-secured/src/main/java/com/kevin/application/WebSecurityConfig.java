@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 
 @Configuration
 @EnableWebSecurity
@@ -38,10 +37,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 							 "/login").permitAll()
 				.anyRequest().authenticated()
 					.and()
-				.sessionManagement()
+				/*.sessionManagement()
 						.sessionAuthenticationStrategy(new NullAuthenticatedSessionStrategy())
 						.sessionFixation().none()
-					.and()
+						.sessionCreationPolicy(SessionCreationPolicy.NEVER)
+					.and()*/
 				.formLogin()
 						.successHandler(authenticationSuccessHandler)
 						.failureHandler(authenticationFailureHandler)
